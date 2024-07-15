@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/project_p.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Project</h1>
+            <span class="subheading">Information About the project </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>The project</h3>
+        <p>This project is mainly a case study of redeemers University</p>
+        <h3>Key Features:</h3>
+        <p>1. Login Facility.
+          <br>2. User can search details of the bookings, buses, fare.
+          <br>3. Ticket Booking.
+          <br>4. Manage edit, add, delete and update the timetable,buses,fare.
+          <br>5. Manage the information about Booking,buses, customers.</p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static',filename='img/bus_inn.png') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Book_Now</h1>
+                    <span class="subheading">Book Your tickets Now! Enjoy The Journey.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body class="masthead" style="background-image: url('{{ url_for('static',filename='img/') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <form name="sentMessage" id="bookingsForm" action="/post" method="post" novalidate>
+                        <br>
+                        <label for="departure">Depart On:</label>
+                        <br>
+                        <input type="date" id="departure" name="departure" min="{{ current_date }}" style="width: 50%" value="{{ departure }}">
+                        <br>
+
+                        <label for="from">From:</label>
+                        <br>
+                        <select id="from" name="from" style="width: 50%">
+                            <option selected disabled></option>
+                            {% for from in fromDetails %}
+                            <option value="{{from[0]}}" {% if fromm == from[0] %}selected{% endif %}>{{from[0]}}</option>
+                            {% endfor %}
+                            <br><br>
+                        </select>
+                        <br>
+
+                        <label for="to">To:</label>
+                        <br>
+                        <select id="to" name="to" style="width: 50%">
+                            <option selected disabled></option>
+                            {% for to in toDetails %}
+                            <option value="{{to[0]}}" {% if too == to[0] %}selected{% endif %}>{{to[0]}}</option>
+                            {% endfor %}
+                            <br><br>
+                        </select>
+                        <br>
+                        <br>
+
+                        <button type="submit" class="btn btn-info" id="button" style="width: 50%">Check Availability</button>
+                        <br><br>
+                        <h3>Details of the buses, that we run and maintain: </h3>
+                        <br>
+                        <p>{{not_found}}</p>
+                        <br>
+                        <table border="2" align="center" style="width: 100%">
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Fare</th>
+                                <th>Seats</th>
+                            </tr>
+                            {% for user in userDetails %}
+                            <tr>
+                                <td>{{user[1]}}</td>
+                                <td>{{user[2]}}</td>
+                                <td>{{user[3]}}</td>
+                                <td>{{user[4]}}</td>
+                                <td>{{user[5]}}</td>
+                                <td>{{user[6]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <br>
+                        <hr>
+                        <label for="name">Select the Bus, You wish to Travel:</label>
+                        <br>
+                        <select id="name" name="name" style="width: 50%">
+                            <option selected disabled></option>
+                            {% for user in userDetails %}
+                            <option value="{{user[1]}}" {% if name == user[1] %}selected{% endif %}>{{user[1]}}</option>
+                            {% endfor %}
+                        </select>
+                        <br><br>
+                        <button type="submit" class="btn btn-success" id="submit" style="width: 50%">Book Now!</button>
+                        <h3>{{ if_found }}</h3>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

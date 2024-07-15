@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/bus-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Transportation</h1>
+            <span class="subheading">Management System</span>
+            <br>
+            <span class="subheading">{{ welcome }} {{ user }}{{ exc }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+        <p>Buses are the most frequently available and used for travelling. there are many types of buses
+made available in the market according to the class of the public.<br> As per the needs of the
+public ,there are many features being provided in the buses. Such as AC coach,NON-AC
+coach,sleeper,semi sleeper etc. Apart from providing these facilities in their buses the problem
+here arises about the tickets i.e; everyone needs the tickets.</p>
+        <br><hr>
+        <h4 align="center">      Try different Menu Options to Explore</h4>
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+  

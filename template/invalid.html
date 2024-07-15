@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/invalid.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>{{ error_msg }}</h1>
+            <!--<span class="subheading">Oops! you have entered InValid Data</span> -->
+            <span class="subheading">{{ error_msg2 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row" align="center">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+        <h2>Please Do Not Provide Any Fake Information</h2>
+        <p>The Error Occured because '{{ error_msg }}' provided</p>
+        <!--
+        <h3>The project's group members are:</h3>
+        <p>LSV Sandeep Margana- 191CS226<br>Tummala Ajay - 191CS259<br>Venkat Kumar Yenumula - 191CS263</p>
+        <h3>Key Features:</h3>
+        <p>1. Login Facility
+          <br>2. User can search details of the bookings, buses, fare...
+          <br>3. Ticket Booking
+          <br>4. Manage edit, add, delete and update the timetable,buses,fare
+          <br>5. Manage the information about Booking,buses, customers</p>
+        -->
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

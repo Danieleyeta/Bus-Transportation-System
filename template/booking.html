@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/booking.png') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Booking Confirmation</h1>
+            <span class="subheading">Your booking details</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="booking-details">
+          <h2>Your Booking Details:</h2>
+          <ul>
+            <li><strong>Departure Date:</strong> {{ booking_details.depart }}</li>
+            <li><strong>From:</strong> {{ booking_details.bk_from }}</li>
+            <li><strong>To:</strong> {{ booking_details.bk_to }}</li>
+            <li><strong>Seat Number:</strong> {{ booking_details.seat_no }}</li>
+            <!-- Add more details if needed -->
+          </ul>
+          <p class="text-muted">Thank you for booking with us!</p>
+          <a href="{{ url_for('download_ticket') }}" class="btn btn-primary">Download Ticket</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

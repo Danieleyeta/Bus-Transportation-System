@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/admin.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Welcome Admin!</h1>
+            <span class="subheading">{{ welcome }} {{ user }}{{ exc }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="center">
+            <form name="Admin" id="adminForm" action="/details" novalidate>
+              <div class="control-group" align="center">
+                  <label>Wanna view our Database contents?</label>
+              </div>
+                  <button type="submit" class="btn btn-info" id="submit" style="width: 25%">View Database</button>
+              <br><br>
+            </form>
+            <form name="Admin" id="adminForm" action="/edit" novalidate>
+              <div class="control-group" align="center">
+                  <label>Wanna Edit our Database contents?</label>
+              </div>
+                  <button type="submit" class="btn btn-info" id="submit" style="width: 25%">Edit Database</button>
+              <br><br>
+            </form>
+          <h3>{{ if_found }}</h3>
+      </div>
+    </div>
+  </div>
+{% endblock %}

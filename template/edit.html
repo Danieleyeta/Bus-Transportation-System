@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/help-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Edit Buses</h1>
+            <span class="subheading">{{ found }}{{ not_found }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="left">
+        <h3>Details of the buses, you want to add: </h3>
+        <form name="sentMessage" id="addForm" action="/edit" method="post" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Bus Name</label>
+              <input type="text" class="form-control" placeholder="Bus Name" id="name" name='name' required data-validation-required-message="Please enter the bus name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <label for="buses">Bus Type</label>
+              <br>
+              <select id="bustype" name="bustype" style="width: 50%">
+                <option selected disabled>  </option>
+                <option value="AC-SLEEPER">AC-SLEEPER</option>
+                <option value="AC-SEATER">AC-SEATER</option>
+                <option value="NON-AC-SEATER">NON-AC-SEATER</option>
+                <option value="NON-AC-SLEEPER">NON-AC-SLEEPER</option>
+              <br><br>
+            </select>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>From Place</label>
+              <input type="text" class="form-control" placeholder="From Place" id="bfrom" name = 'bfrom' required data-validation-required-message="Please enter from place.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>To Place</label>
+              <input type="text" class="form-control" placeholder="To place" id="place" name = 'place' required data-validation-required-message="Please enter to place.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Fare</label>
+              <input type="number" class="form-control" placeholder="Fare" id="fare" name = 'fare' required data-validation-required-message="Please enter your fare.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Seats</label>
+              <input type="number" class="form-control" placeholder="Seats" id="seats" name = 'seats' required data-validation-required-message="Please enter Bus seat number.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-success" id="sendMessageButton">Add bus</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="left">
+        <h3>Enter the Bus_id to delete a bus!</h3>
+        <form name="sentMessage" id="delForm" action="/edit" method="post" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Bus Id</label>
+              <input type="number" class="form-control" placeholder="Bus_Id" id="busid" name="busid" min="300" required data-validation-required-message="Please enter the bus_id.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-danger" id="sendMessageButton">Delete bus</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

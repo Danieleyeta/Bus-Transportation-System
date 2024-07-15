@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .ticket-container {
+      width: 600px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticket-container">
+    <h2>Bus Ticket</h2>
+    <ul>
+      <li><strong>Departure Date:</strong> {{ booking_details.depart }}</li>
+      <li><strong>From:</strong> {{ booking_details.bk_from }}</li>
+      <li><strong>To:</strong> {{ booking_details.bk_to }}</li>
+      <li><strong>Seat Number:</strong> {{ booking_details.seat_no }}</li>
+      <!-- Add more details if needed -->
+    </ul>
+    <p class="text-muted">Thank you for booking with us!</p>
+  </div>
+</body>
+</html>

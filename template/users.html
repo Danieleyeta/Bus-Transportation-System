@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/help-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Details</h1>
+            <span class="subheading">{{found}}{{not_found}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="left">
+        <h3>List of the users: </h3>
+        <br>
+          <table border="2" align="center" style="width: 100%">
+            <tr>
+            <th>User_id</th>
+            <th>Name</th> 
+            <th>Email</th> 
+            </tr>
+            {% for user in userDetails %}
+              <tr>
+                <td> {{user[0]}} </td>
+                <td> {{user[1]}} </td>
+                <td> {{user[2]}} </td>
+              </tr>
+            {% endfor %}
+          </table><br>
+          <h3>Details of the buses: </h3>
+          <br>
+          <table border="2" align="center" style="width: 100%">
+            <tr>
+            <th>Bus_id</th>
+            <th>Name</th>
+            <th>Type</th> 
+            <th>From</th> 
+            <th>To</th>
+            <th>Fare</th>
+            <th>Seats</th>
+            </tr>
+            {% for bus in busDetails %}
+              <tr>
+                <td> {{bus[0]}} </td>
+                <td> {{bus[1]}} </td>
+                <td> {{bus[2]}} </td>
+                <td> {{bus[3]}} </td>
+                <td> {{bus[4]}} </td>
+                <td> {{bus[5]}} </td>
+                <td> {{bus[6]}} </td>
+              </tr>
+            {% endfor %}
+          </table><br>
+            <h3>Details of the all the bookings: </h3><br>
+            <table border="2" align="left" style="width: 120%">
+            <tr>
+            <th>Booking_id</th>  
+            <th>User_id</th>
+            <th>Bus_id</th>
+            <th>Departure Date</th>
+            <th>From</th> 
+            <th>To</th> 
+            <th>Booking Time</th>
+            <th>Seat_No</th>
+            </tr>
+            {% for book in bookDetails %}
+              <tr>
+                <td> {{book[0]}} </td>
+                <td> {{book[1]}} </td>
+                <td> {{book[2]}} </td>
+                <td> {{book[3]}} </td>
+                <td> {{book[4]}} </td>
+                <td> {{book[5]}} </td>
+                <td> {{book[6]}} </td>
+                <td> {{book[7]}} </td>
+              </tr>
+            {% endfor %}
+          </table><br><br>
+        </div>
+      </div>
+  </div>
+{% endblock %}

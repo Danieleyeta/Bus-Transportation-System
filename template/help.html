@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/help-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Buses</h1>
+            <span class="subheading">{{found}}{{not_found}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="center">
+        <h3>Details of the buses, that we run and maintain: </h3>
+        <br>
+          <table border="2" align="center" style="width: 100%">
+            <tr>
+            <th>Name</th>
+            <th>Type</th> 
+            <th>From</th> 
+            <th>To</th>
+            <th>Fare</th>
+            </tr>
+            {% for user in userDetails %}
+              <tr>
+                <td> {{user[1]}} </td>
+                <td> {{user[2]}} </td>
+                <td> {{user[3]}} </td>
+                <td> {{user[4]}} </td>
+                <td> {{user[5]}} </td>
+              </tr>
+            {% endfor %}
+          </table><br>
+<!-- 
+            <form name="sentMessage" id="helpForm" action="/help" method="post" novalidate>
+              <label for="buses">Select the Bus, You wish to Travel:</label><br>
+                <select id="buses" name="from" style="width: 50%">
+                <option selected disabled>  </option>
+                {% for user in userDetails %}
+                  <option value="{{user[1]}}">{{user[1]}}</option>
+                {% endfor %}
+                </select>
+                <br><br>
+                <button type="submit" class="btn btn-success" id="submit" style="width: 50%">Book Now!</button>
+              </form> -->
+          <h3>{{ if_found }}</h3>
+      </div>
+    </div>
+  </div>
+         <!-- <form name="sentMessage" id="bookingsForm" action="/mybookings" method="post" novalidate>
+          <label for="buses">From:</label>
+              <br>
+              <select id="buses" name="from" style="width: 50%">
+                <option selected disabled>  </option>
+                {% for user in userDetails %}
+                  <option value="MANGALORE">{{user[1]}}</option>
+                {% endfor %}
+              </select>
+          
+        </form>
+          <br> -->
+{% endblock %}

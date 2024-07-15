@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/payment-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Payment</h1>
+            <span class="subheading">Secure your booking with payment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto" align="left">
+        <h3>Choose your payment method:</h3>
+        <form name="paymentForm" id="paymentForm" action="/process_payment" method="post" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Payment Method</label>
+              <br>
+              <select class="form-control" id="paymentMethod" name="paymentMethod" required data-validation-required-message="Please select a payment method.">
+                <option value="" disabled selected>Select your option</option>
+                <option value="cash">Cash</option>
+                <option value="card">Card</option>
+                <option value="transfer">Transfer</option>
+              </select>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+
+          <!-- Card Payment Fields -->
+          <div id="cardFields" style="display: none;">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Cardholder Name</label>
+                <input type="text" class="form-control" placeholder="Cardholder Name" id="cardname" name='cardname' data-validation-required-message="Please enter the cardholder name.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Card Number</label>
+                <input type="text" class="form-control" placeholder="Card Number" id="cardnumber" name='cardnumber' data-validation-required-message="Please enter the card number." pattern="\d{16}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Expiration Date</label>
+                <input type="text" class="form-control" placeholder="MM/YY" id="expiry" name='expiry' data-validation-required-message="Please enter the expiration date." pattern="\d{2}/\d{2}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>CVV</label>
+                <input type="text" class="form-control" placeholder="CVV" id="cvv" name='cvv' data-validation-required-message="Please enter the CVV." pattern="\d{3}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transfer Payment Fields -->
+          <div id="transferFields" style="display: none;">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Bank Name</label>
+                <input type="text" class="form-control" placeholder="Bank Name" id="bankname" name='bankname' data-validation-required-message="Please enter the bank name.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Account Number</label>
+                <input type="text" class="form-control" placeholder="Account Number" id="accountnumber" name='accountnumber' data-validation-required-message="Please enter the account number." pattern="\d{10,}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>IFSC Code</label>
+                <input type="text" class="form-control" placeholder="IFSC Code" id="ifsc" name='ifsc' data-validation-required-message="Please enter the IFSC code.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var paymentMethodSelect = document.getElementById('paymentMethod');
+      var cardFields = document.getElementById('cardFields');
+      var transferFields = document.getElementById('transferFields');
+
+      paymentMethodSelect.addEventListener('change', function() {
+        var selectedValue = this.value;
+        cardFields.style.display = 'none';
+        transferFields.style.display = 'none';
+
+        if (selectedValue === 'card') {
+          cardFields.style.display = 'block';
+        } else if (selectedValue === 'transfer') {
+          transferFields.style.display = 'block';
+        }
+      });
+    });
+  </script>
+{% endblock %}
